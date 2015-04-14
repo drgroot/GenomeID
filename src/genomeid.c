@@ -11,6 +11,8 @@ int generate_id(struct genomeid_args* args ){
   if( !args->ref_version || strlen(args->file) <= 1 || strlen(args->file_type) <= 1 ){
     //missing args
   }
+
+  init( args->ref_version);
   
   //determine file type
   if( strcmp(args->file_type, "vcf") == 0 ){
