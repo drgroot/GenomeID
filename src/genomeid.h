@@ -1,6 +1,8 @@
+#include "vcf.h"
+#include "globals.h"
 #ifndef GENOMEID_H
 #define GENOMEID_H
 
-int add(int a, int b);
+int generate_id(struct genomeid_args* args );
 
 #endif

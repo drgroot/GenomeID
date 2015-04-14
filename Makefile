@@ -1,22 +1,23 @@
 CC=gcc
 CFLAGS=-c -Wall
 
-SOURCES=src/genomeid.c
+SOURCES:= $(shell find src/ -name '*.c')
+HEADERS:= $(shell find src/ -name '*.h')
 OBJECTS=$(SOURCES:.c=.o)
 LIBRARY=lib/libgenomeid.a
 
-all: $(SOURCES) $(LIBRARY) test
+all: $(LIBRARY) test
 
-notest: $(SOURCES) $(LIBRARY)
+notest: $(SOURCES) $(LIBRARY) 
 
-test: $(LIBRARY)
+test: $(LIBRARY) tests/test.c
 	gcc tests/test.c -o test -I src/ -L lib/ -l genomeid
 
 $(LIBRARY): $(OBJECTS)
 	mkdir -p lib
 	ar rcs $(LIBRARY) $(OBJECTS)
 
-.o:
+.o: $(SOURCES) $(HEADERS)
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:

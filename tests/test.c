@@ -2,6 +2,10 @@
 #include "genomeid.h"
 
 int main(){
-  int j = add(1,2);
-  printf("%d",j);
+  struct genomeid_args arguments;
+  arguments.ref_version = 19;
+  arguments.file = "../samples/sample1.vcf";
+  arguments.file_type = "vcf";
+
+  generate_id( &arguments );
 }
