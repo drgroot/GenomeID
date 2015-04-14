@@ -3,7 +3,7 @@ static const double genomeid_version = 1.0;
 
 int generate_id(struct genomeid_args* args ){
   //check required arguments
-  if( !args->ref_version || !args->file || !args->file_type ){
+  if( !args->ref_version || strlen(args->file) <= 1 || strlen(args->file_type) <= 1 ){
     //missing args
   }
   
